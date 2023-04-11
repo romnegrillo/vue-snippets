@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Basics</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js" defer></script>
+    <script src="app.js" defer></script>
+
+    <style>
+        .box {
+            border: 1px solid #000;
+            margin: 4px 0px;
+            padding: 8px;
+            background-color: #a8326d;
+        }
+
+        .favorite {
+            background-color: #8160dd;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <hr>
+
+        <a href="{{link}}" target="__blank">Vue JS Website - This won't work</a>
+        <br>
+        <a v-bind:href="link" target="__blank">Vue JS Website - v-bind</a>
+        <br>
+        <a :href="link" target="__blank">Vue JS Website - shorthand</a>
+
+        <p>Count: {{count}}</p>
+        <button v-on:click="incrementCount">Increment</button>
+        <button @:click="decrementCount">Decrement</button>
+        <hr>
+
+        <p>Object binding: {{person}}</p>
+        <hr>
+        <p>JavaScript expressions: {{ 5+5 }}</p>
+        <p>JavaScript expressions: {{ message.split('').reverse().join('') }}</p>
+        <hr>
+
+        <p v-if="displayHeroes">{{heroes}}</p>
+        <button @click="toggleDisplayHeroes">
+            <span v-if="displayHeroes">Hide Heroes</span>
+            <span v-else>Show Heroes</span>
+        </button>
+        <hr>
+
+        <div v-if="displayHeroes">
+            <div v-for="hero in heroes">
+                <h2>{{hero.name}}</h2>
+                <p>{{hero.role}}</p>
+            </div>
+        </div>
+        <button @click="toggleDisplayHeroes">
+            <span v-if="displayHeroes">Hide Heroes</span>
+            <span v-else>Show Heroes</span>
+        </button>
+        <hr>
+
+        <div class="box" :class="{favorite: hero.isFav}" v-for="hero in heroes" :key="hero.id" @click="toggleFav(hero)">
+            <h2>{{hero.name}}</h2>
+            <p>{{hero.role}}</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
