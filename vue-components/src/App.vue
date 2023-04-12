@@ -61,7 +61,6 @@ main {
 .button {
   padding: 8px;
   width: 120px;
-  margin-left: 8px;
   border-radius: 16px;
   border: none;
   margin: 8px;
